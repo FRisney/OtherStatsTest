@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 886144962cb078144aa0f98e845a5f39, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 584a2eec9b6e6b8468eef222a2fb1759, type: 3}
+  Name: RyeSin
+  Strength: 33
+  Wisdom: 33
+  Dexterity: 33
+  ActiveWeapon: {fileID: 0}
+  LeftRing: {fileID: 0}
+  RightRing: {fileID: 0}
+  ActiveHead: {fileID: 0}
+  ActiveBody: {fileID: 0}
+  ActiveLegs: {fileID: 0}
+  Inventory: []
+  _MaxHealth: 3300
+  _MaxMana: 3300
+  _MaxStamina: 3300
+  _Level: 25
+  _Experience: 320
+  _ExperienceCap: 1.5099499e-15
+  _CurrentHealth: 3300
+  _CurrentMana: 3300
+  _CurrentStamina: 3300
