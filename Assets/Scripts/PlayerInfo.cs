@@ -87,50 +87,42 @@ public class PlayerInfo : ScriptableObject {
 		} 
 	}
 
-    public float ModifyHealth{
-        set {
-				if (value > 0) { _CurrentHealth += value; }
-				if (value < 0) { _CurrentHealth -= value; }
-				if (_CurrentHealth <= 0) { Die(); }
-            }
-    }
+	public float GetExp{ get { return _Experience; } }
+
+	public float GetExpCap{ get { return _ExperienceCap; } }
+
+    public float AddHealth{ set { _CurrentHealth += value; if (_CurrentHealth > _MaxHealth) { _CurrentHealth = _MaxHealth; } } }
+
+    public float ReduceHealth{ set { _CurrentHealth -= value; if (_CurrentHealth <= 0) { Die(); _CurrentHealth = 0; } } }
 
     public float CurHealth{
         set { _CurrentHealth = value; if (_CurrentHealth <= 0) { Die(); } }
         get { return _CurrentHealth; }
     }
 
-    public float ModifyMana{
-        set {
-				if (value > 0) { _CurrentMana = value; }
-				if (value < 0) { _CurrentMana -= value; }
-            }
-	}
+    public float AddMana{ set { _CurrentMana += value; if (_CurrentMana > _MaxMana) { _CurrentMana = _MaxMana; } } }
 
-	public float CurMana{
-        set {_CurrentMana = value; }
+    public float ReduceMana { set { _CurrentMana -= value; if (_CurrentMana <= 0) { _CurrentMana = 0; } } }
+
+    public float CurMana{
+        set { _CurrentMana = value; if (_CurrentMana <= 0) { Die(); } }
         get { return _CurrentMana; }
-	}
+    }
 
-	public float ModifyStamina{
-        set {
-				if (value > 0) { _CurrentStamina += value; }
-				if (value < 0) { _CurrentStamina -= value; }
-            }
-	}
+    public float AddStamina { set { _CurrentStamina += value; if (_CurrentStamina > _MaxStamina) { _CurrentStamina = _MaxStamina; } } }
 
-	public float CurStamina{
-        set {
-				_CurrentStamina = value;
-            }
+    public float ReduceStamina { set { _CurrentStamina -= value; if (_CurrentStamina <= 0) { _CurrentStamina = 0; } } }
+
+    public float CurStamina{
+        set { _CurrentStamina = value; if (_CurrentStamina <= 0) { Die(); } }
         get { return _CurrentStamina; }
-	}
+    }
 
-	public float MaxStamina { get { return _MaxStamina; } }
+	public float GetMaxStamina { get { return _MaxStamina; } }
 
-	public float MaxMana { get { return _MaxMana; } }
+	public float GetMaxMana { get { return _MaxMana; } }
 
-	public float MaxHealth{ get{ return _MaxHealth; } }
+	public float GetMaxHealth{ get{ return _MaxHealth; } }
 
 	private void Die(){ Debug.Log("Morri!"); }
 }
