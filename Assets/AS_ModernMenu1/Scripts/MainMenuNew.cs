@@ -49,7 +49,7 @@ public class MainMenuNew : MonoBehaviour {
 	}
 
 	public void NewGame(){
-		SceneManager.LoadScene(sceneName);
+		SceneManager.LoadScene("SampleScene");
 	}
 
 	public void  DisablePlayCampaign (){

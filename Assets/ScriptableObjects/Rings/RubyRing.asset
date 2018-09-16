@@ -8,12 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2264e86ebc4145c49a56183c7321891a, type: 3}
-  m_Name: IronSword
+  m_Script: {fileID: 11500000, guid: cb3a8c387d3c4d24db099bd45deecb66, type: 3}
+  m_Name: RubyRing
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
-  Name: 
-  PhysicalDamage: 0
-  StaminaConsume: 0
-  MagicalDamage: 0
-  ManaConsume: 0
+  Name: Ruby Ring
+  HealthMod: 30
+  ManaMod: 0
+  StaminaMod: 0
