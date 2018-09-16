@@ -4,12 +4,16 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewNPC", menuName = "Custom/NPC")]
 public class NPCInfo : ScriptableObject {
-    public string Name;
+	[Header("Name and Image")]
+	public Sprite sprite;
+	public string Name;
 
-    public int Strength;
+	[Header("Attributes")]
+	public int Strength;
     public int Wisdom;
     public int Dexterity;
 
+	[Header("Equipment")]
 	public Weapon ActiveWeapon;
 	public Ring LeftRing;
 	public Ring RightRing;
@@ -17,100 +21,77 @@ public class NPCInfo : ScriptableObject {
 	public Body ActiveBody;
 	public Legs ActiveLegs;
 
+	[Header("Inventory")]
+	public List<ScriptableObject> inventory;
+	public int gold;
+
+	//[Header("Inerent Stats")]
 	private int _MaxHealth;
 	private int _MaxMana;
 	private int _MaxStamina;
-
-	private int _Level;
-	private float _Experience;
-	private float _ExperienceCap;
+	
+	public int Level;
 
     private float _CurrentHealth;
 	private float _CurrentMana;
 	private float _CurrentStamina;
+
+	private float _PhysicalDamage;
+	private float _MagicalDamage;
+	private float _PhysicalResist;
+	private float _MagicalResist;
+
+	public void SetUp(){
+		Speed = ((Strength + Dexterity) / 2) * 3;
+
+		_MaxHealth = (Strength * 2) * (Level * 2);
+		_MaxMana = (Wisdom * 2) * (Level * 2);
+		_MaxStamina = (Dexterity * 2) * (Level * 2);
+
+		_CurrentHealth = _MaxHealth;
+		_CurrentMana = _MaxMana;
+		_CurrentStamina = _MaxStamina;
+	}
 	
-	public void DefineAtributes(){
-		_Level = 1;
-		_Experience = 0.0f;
-		_ExperienceCap = 90.0f;
+	public int Speed { get; private set; }
 
-		SetSpeed = ((Strength + Dexterity) / 2) * 3;
+	public string GetName{ get{ return Name; } }
 
-		_MaxHealth = (Strength * 2) * (_Level * 2);
-		_MaxMana = (Wisdom * 2) * (_Level * 2);
-		_MaxStamina = (Dexterity * 2) * (_Level * 2);
+	// Health Encapsulators
+	public float AddHealth{ set { _CurrentHealth += value; if (_CurrentHealth > _MaxHealth) { _CurrentHealth = _MaxHealth; } } }
 
-		_CurrentHealth = _MaxHealth;
-		_CurrentMana = _MaxMana;
-		_CurrentStamina = _MaxStamina;
-	}
-
-	private void UpdateStatsOnLevelUp(){
-		//Strenth += 2;
-		//Wisdom += 2;
-		//Dexterity += 2;
-		_MaxHealth = (Strength * 2) * (_Level * 2);
-		_MaxMana = (Wisdom * 2) * (_Level * 2);
-		_MaxStamina = (Dexterity * 2) * (_Level * 2); 
-		
-		_CurrentHealth = _MaxHealth;
-		_CurrentMana = _MaxMana;
-		_CurrentStamina = _MaxStamina;
-	}
-
-	public int GetSpeed { get; private set; }
-	private int SetSpeed{ set{ GetSpeed = value; } }
-
-    public string GetName{
-		get{
-			return Name;
-		}
-	}
-
-	public float AddExp{ 
-		set{ 
-			_Experience += value; 
-			if (_Experience >= _ExperienceCap){ 
-				_Level++;
-				UpdateStatsOnLevelUp();
-				_ExperienceCap *= 0.20f; 
-			} 
-		} 
-	}
+    public float ReduceHealth{ set { _CurrentHealth -= value; if (_CurrentHealth <= 0) { Die(); _CurrentHealth = 0; } } }
 
     public float CurHealth{
-        set {
-				if (value > 0) { _CurrentHealth += value; }
-				if (value < 0) { _CurrentHealth -= value; }
-				if (_CurrentHealth <= 0) { Die(); }
-            }
+        set { _CurrentHealth = value; if (_CurrentHealth <= 0) { Die(); } }
         get { return _CurrentHealth; }
     }
 
-	public float MaxHealth{ get{ return _MaxHealth; } }
+	public float GetMaxHealth{ get{ return _MaxHealth; } }
 
-	private void Die(){
-		//Morreu
-		Debug.Log("Morri!");
-	}
+	// Mana Encapsulators
+    public float AddMana{ set { _CurrentMana += value; if (_CurrentMana > _MaxMana) { _CurrentMana = _MaxMana; } } }
+
+    public float ReduceMana { set { _CurrentMana -= value; if (_CurrentMana <= 0) { _CurrentMana = 0; } } }
 
     public float CurMana{
-        set {
-				if (value > 0) { _CurrentMana += value; }
-				if (value < 0) { _CurrentMana -= value; }
-            }
+        set { _CurrentMana = value; }
         get { return _CurrentMana; }
-	}
+    }
 
-	public float MaxMana { get { return _MaxMana; } }
+	// Stamina Encapsulators
+	public float GetMaxMana { get { return _MaxMana; } }
 
-	public float CurStamina{
-        set {
-				if (value > 0) { _CurrentStamina += value; }
-				if (value < 0) { _CurrentStamina -= value; }
-            }
+    public float AddStamina { set { _CurrentStamina += value; if (_CurrentStamina > _MaxStamina) { _CurrentStamina = _MaxStamina; } } }
+
+    public float ReduceStamina { set { _CurrentStamina -= value; if (_CurrentStamina <= 0) { _CurrentStamina = 0; } } }
+
+    public float CurStamina{
+        set { _CurrentStamina = value; }
         get { return _CurrentStamina; }
-	}
+    }
 
-	public float MaxStamina { get { return _MaxStamina; } }
+	public float GetMaxStamina { get { return _MaxStamina; } }
+
+	private void Die(){ Debug.Log("Morri!"); }
 }

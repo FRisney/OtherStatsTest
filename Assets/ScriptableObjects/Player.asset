@@ -12,23 +12,32 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 584a2eec9b6e6b8468eef222a2fb1759, type: 3}
-  Name: RyeSin
-  Strength: 30
-  Wisdom: 30
-  Dexterity: 30
+  name: RyeSin
+  Strength: 9
+  Wisdom: 9
+  Dexterity: 9
   ActiveWeapon: {fileID: 11400000, guid: 0490b9f559314a24db10c627595dbbe5, type: 2}
-  LeftRing: {fileID: 0}
-  RightRing: {fileID: 0}
-  ActiveHead: {fileID: 0}
-  ActiveBody: {fileID: 0}
-  ActiveLegs: {fileID: 0}
-  Inventory: []
-  _MaxHealth: 2640
-  _MaxMana: 2640
-  _MaxStamina: 2640
-  _Level: 22
-  _Experience: 2528.8376
-  _ExperienceCap: 4140.4644
-  _CurrentHealth: 2140
-  _CurrentMana: 2640
-  _CurrentStamina: 2640
+  LeftRing: {fileID: 11400000, guid: 8a308d94dd34d934a9ba2eb85e0e52ca, type: 2}
+  RightRing: {fileID: 11400000, guid: 8a308d94dd34d934a9ba2eb85e0e52ca, type: 2}
+  ActiveHead: {fileID: 11400000, guid: de245b5a64225a342b275f89371c5634, type: 2}
+  ActiveBody: {fileID: 11400000, guid: ce66da0fca5af8a4dbe763c11fda6c64, type: 2}
+  ActiveLegs: {fileID: 11400000, guid: 0758ccfbc0306e04fb43522c048b3585, type: 2}
+  effects: []
+  effectHolder: {fileID: 0}
+  effectElement: {fileID: 1109280686371218, guid: f5d05de6d74b31b4dab0ceab4ae8a698,
+    type: 2}
+  materials: []
+  gold: 0
+  _MaxHealth: 36
+  _MaxMana: 36
+  _MaxStamina: 36
+  _Level: 1
+  _Experience: 0
+  _ExperienceCap: 90
+  _CurrentHealth: 36
+  _CurrentMana: 36
+  _CurrentStamina: 36
+  _PhysicalDamage: 89.100006
+  _MagicalDamage: 0
+  _PhysicalResist: 15
+  _MagicalResist: 5

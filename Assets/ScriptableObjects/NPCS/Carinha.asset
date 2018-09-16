@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8512d398ca2ade419b767bdc1702a06, type: 3}
+  m_Name: Carinha
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
+  Name: 
+  Strength: 0
+  Wisdom: 0
+  Dexterity: 0
+  ActiveWeapon: {fileID: 0}
+  LeftRing: {fileID: 0}
+  RightRing: {fileID: 0}
+  ActiveHead: {fileID: 0}
+  ActiveBody: {fileID: 0}
+  ActiveLegs: {fileID: 0}
+  Inventory: []

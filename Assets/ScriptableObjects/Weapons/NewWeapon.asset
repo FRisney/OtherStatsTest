@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2264e86ebc4145c49a56183c7321891a, type: 3}
-  m_Name: IronSword
+  m_Name: NewWeapon
   m_EditorClassIdentifier: 
-  Image: {fileID: 21300000, guid: 439486a4aa566984eba71b527d0ceaf7, type: 3}
-  Name: Iron Sword
-  PhysicalDamage: 15
-  StaminaConsume: 8
+  Image: {fileID: 21300000, guid: 2b9ac9a5f4db0f24eb713f481f23b355, type: 3}
+  Name: Torch
+  PhysicalDamage: 5
+  StaminaConsume: 10
   MagicalDamage: 0
   ManaConsume: 0

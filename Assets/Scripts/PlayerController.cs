@@ -13,17 +13,30 @@ public class PlayerController : MonoBehaviour {
 	public Image expBar;
 	public TextMeshProUGUI playerNameText;
 	public SpriteRenderer sprite;
-	public float t = 0.3f;
+	public SpriteRenderer weapon;
+	private float t = 0.3f;
 
 	// Use this for initialization
 	void Start () {
 		playerInstance.PlayerAttributes("RyeSin", 9, 9, 9);
 		sprite = GetComponent<SpriteRenderer>();
 		sprite.sprite = playerInstance.sprite;
+		weapon.sprite = playerInstance.ActiveWeapon.Image;
 		//healthBar = GetComponent<Image>();
 	}
 	
 	void LateUpdate () {
+
+		// Sets the damage values
+		playerInstance.PhysicalDamage = playerInstance.ActiveWeapon.PhysicalDamage * (playerInstance.Strength * 0.66f);
+		playerInstance.MagicalDamage = playerInstance.ActiveWeapon.MagicalDamage;
+		// --
+
+		// Sets the resist values
+		playerInstance.PhysicalResist = playerInstance.ActiveHead.PhysicalResist + playerInstance.ActiveBody.PhysicalResist + playerInstance.ActiveLegs.PhysicalResist;
+		playerInstance.MagicalResist = playerInstance.ActiveHead.MagicalResist + playerInstance.ActiveBody.MagicalResist + playerInstance.ActiveLegs.MagicalResist;
+		// --
+
 		// Displays the Name, the Health, the Mana and the Stamina at the moment
 		healthBar.fillAmount = Mathf.SmoothStep(healthBar.fillAmount, scale(0F, playerInstance.GetMaxHealth, 0f, 1f, playerInstance.CurHealth), t);
 		manaBar.fillAmount = Mathf.SmoothStep(manaBar.fillAmount, scale(0F, playerInstance.GetMaxMana, 0f, 1f, playerInstance.CurMana), t);
@@ -35,5 +48,9 @@ public class PlayerController : MonoBehaviour {
 
 	public float scale(float OldMin, float OldMax, float NewMin, float NewMax, float OldValue){
 		return ((((OldValue - OldMin) * (NewMax - NewMin)) / (OldMax - OldMin)) + NewMin);
+	}
+
+	public void Haa(Effect effect){
+		StartCoroutine(playerInstance.StartBuff(effect));
 	}
 }
